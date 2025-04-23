@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header bg-light">
+          Department List
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Deparment Name</th>
+                    <th>Created Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of departmentList; let i = index">
+                    <td>{{ i }}</td>
+                    <td>{{item.deptName}}</td>
+                    <td>{{item.createdDate | date: 'dd-MM-yyyy' }}</td>
+                    <td>
+                      <button class="btn btn-sm btn-primary" (click)="onEdit(item)">Edit</button>&nbsp;
+                      <button class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header bg-light">
+          Create Department
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <label for="departName" class="form-label">Department Name</label>
+              <input type="text" class="form-control" id="deptName" placeholder="Enter department name"
+                name="deptName" [(ngModel)]="newDeptObj.deptName">
+            </div>
+            <button *ngIf="this.newDeptObj.deptId == 0" type="submit" class="btn btn-primary" (click)="saveDept()">Create</button>&nbsp;
+            <button *ngIf="this.newDeptObj.deptId != 0" type="submit" class="btn btn-primary" (click)="updateDept()">Update</button>&nbsp;
+            <button type="reset" class="btn btn-light float-right">Reset</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+Avoid CORS error: execute this project with port number 4209
+Command:
+ng serve --port 4209
